@@ -14,9 +14,16 @@ dialog_history: dict[int, list[dict]] = {}
 @router.message(CommandStart())
 async def cmd_start(message: Message):
     dialog_history.pop(message.from_user.id, None)
+    name = message.from_user.first_name or "друг"
     await message.answer(
-        "Привет! Я ассистент компании «Центр Красок».\n"
-        "Спрашивайте о наших товарах, услугах, адресах и всём остальном — я помогу."
+        f"Привет, {name}!\n\n"
+        "Я AI-ассистент компании Центр Красок #1.\n\n"
+        "Спрашивайте всё что интересует:\n"
+        "- Какие краски и бренды есть?\n"
+        "- Где находится магазин?\n"
+        "- Как сделать колеровку?\n"
+        "- Есть ли скидки для дизайнеров?\n\n"
+        "Просто напишите ваш вопрос."
     )
 
 
